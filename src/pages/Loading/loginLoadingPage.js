@@ -24,7 +24,7 @@ const LoginLoadingPage = () => {
   }, []);
   console.log(code);
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center min-w-full min-h-full gap-y-5">
       <div className="animate-spin">
         <LogoIcon />
       </div>
