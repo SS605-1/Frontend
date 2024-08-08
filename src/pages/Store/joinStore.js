@@ -1,20 +1,8 @@
 import React from 'react';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
-import Button from '@mui/material/Button';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Button from '../../components/Button.js';
 
 const JoinStore = () => {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#3A70FF'
-      },
-      secondary: {
-        main: '#D9D9D9'
-      }
-    }
-  });
-
   return (
     <div className="flex flex-col w-full y-full">
       <div className="flex justify-start">
@@ -31,17 +19,16 @@ const JoinStore = () => {
               placeholder="초대 코드 입력"
               className="border-[3px] rounded-[20px] border-wink-blue w-[220px] h-[95px] placeholder:text-center placeholder:text-black placeholder:font-normal placeholder:text-xl"
             />
-            <ThemeProvider theme={theme}>
-              <Button
-                variant="contained"
-                disableElevation
-                sx={{ width: 220, height: 47, borderRadius: 7.5 }}
-                color="primary"
-                className="text-white font-bold text-xl"
-              >
-                확인
-              </Button>
-            </ThemeProvider>
+
+            <Button
+              variant="contained"
+              disableElevation
+              sx={{ width: 220, height: 47, borderRadius: 7.5 }}
+              color="primary"
+              className="text-white font-bold text-xl"
+            >
+              확인
+            </Button>
           </div>
         </div>
       </div>

@@ -6,8 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import Button from '@mui/material/Button';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Button from '../../components/Button.js';
 
 const SignIn = () => {
   const [value, setValue] = React.useState('');
@@ -17,16 +16,6 @@ const SignIn = () => {
     setValue(newValue);
   };
 
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#3A70FF'
-      },
-      secondary: {
-        main: '#D9D9D9'
-      }
-    }
-  });
   return (
     <div className="flex flex-col h-full w-full">
       <div className="flex  justify-start">
@@ -53,17 +42,15 @@ const SignIn = () => {
           </RadioGroup>
         </FormControl>
 
-        <ThemeProvider theme={theme}>
-          <Button
-            variant="contained"
-            disableElevation
-            sx={{ width: 146, height: 47, borderRadius: 7.5 }}
-            color="primary"
-            className="text-white font-semibold text-xl"
-          >
-            확인
-          </Button>
-        </ThemeProvider>
+        <Button
+          variant="contained"
+          disableElevation
+          sx={{ width: 146, height: 47, borderRadius: 7.5 }}
+          color="primary"
+          className="text-white font-semibold text-xl"
+        >
+          확인
+        </Button>
       </div>
     </div>
   );

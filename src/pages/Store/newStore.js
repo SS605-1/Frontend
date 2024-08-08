@@ -1,20 +1,8 @@
 import React from 'react';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
-import Button from '@mui/material/Button';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Button from '../../components/Button.js';
 
 const NewStore = () => {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#3A70FF'
-      },
-      secondary: {
-        main: '#D9D9D9'
-      }
-    }
-  });
-
   return (
     <div className="flex flex-col w-full y-full gap-y-[100px]">
       <div className="flex justify-start">
@@ -32,17 +20,15 @@ const NewStore = () => {
               className="rounded-[20px] bg-wink-gray w-[188px] h-full"
             />
           </div>
-          <ThemeProvider theme={theme}>
-            <Button
-              variant="contained"
-              disableElevation
-              sx={{ width: 220, height: 47, borderRadius: 7.5 }}
-              color="primary"
-              className="text-white font-bold text-xl"
-            >
-              확인
-            </Button>
-          </ThemeProvider>
+          <Button
+            variant="contained"
+            disableElevation
+            sx={{ width: 220, height: 47, borderRadius: 7.5 }}
+            color="primary"
+            className="text-white font-bold text-xl"
+          >
+            확인
+          </Button>
         </div>
       </div>
     </div>
