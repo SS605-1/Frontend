@@ -17,7 +17,7 @@ const JoinStore = () => {
             <input
               type="password"
               placeholder="초대 코드 입력"
-              className="border-[3px] rounded-[20px] border-wink-blue w-[220px] h-[95px] placeholder:text-center placeholder:text-black placeholder:font-normal placeholder:text-xl"
+              className="border-[3px] rounded-[20px] border-wink-blue w-[220px] h-[95px] text-center placeholder:text-center placeholder:text-black placeholder:font-normal placeholder:text-xl"
             />
 
             <Button

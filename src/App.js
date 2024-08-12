@@ -7,6 +7,7 @@ import Main from './pages/Main/main';
 import SignInPage from './pages/SignIn/signIn';
 import JoinStore from './pages/Store/joinStore';
 import NewStore from './pages/Store/newStore';
+import HomePage from './pages/Home/homePage';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/Main" element={<Main />} />
         <Route path="/JoinStore" element={<JoinStore />} />
         <Route path="/NewStore" element={<NewStore />} />
+        <Route path="/HomePage" element={<HomePage />} />
       </Routes>
     </div>
   );

@@ -17,7 +17,7 @@ const NewStore = () => {
             <span className="text-black font-bold text-2xl">점포 이름</span>
             <input
               type="text"
-              className="rounded-[20px] bg-wink-gray w-[188px] h-full"
+              className="rounded-[20px] bg-wink-gray w-[188px] h-full text-center"
             />
           </div>
           <Button
