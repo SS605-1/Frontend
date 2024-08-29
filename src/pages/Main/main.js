@@ -2,8 +2,13 @@ import React from 'react';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import Button from '../../components/Button.js';
 import { ReactComponent as Bag } from '../../assets/bag.svg';
+import { useNavigate } from 'react-router-dom';
 
 const Main = () => {
+  const navigate = useNavigate();
+  const handleButtonClick = () => {
+    navigate('/SignIn');
+  };
   return (
     <div className="flex flex-col w-full h-full gap-y-[22px]">
       <div className="flex  justify-start">
@@ -24,6 +29,7 @@ const Main = () => {
           sx={{ width: 295, height: 95, borderRadius: 7.5 }}
           color="primary"
           className="text-white font-semibold  text-xl"
+          onClick={handleButtonClick}
         >
           점포 가입/생성하기
         </Button>

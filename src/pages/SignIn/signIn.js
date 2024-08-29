@@ -7,9 +7,19 @@ import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '../../components/Button.js';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
   const [value, setValue] = React.useState('');
+  const navigate = useNavigate();
+
+  const handleButtonClick = async () => {
+    if (value === '사장') {
+      navigate('/NewStore');
+    } else {
+      navigate('/JoinStore');
+    }
+  };
 
   const handleChange = (event) => {
     const newValue = event.target.value;
@@ -48,6 +58,7 @@ const SignIn = () => {
           sx={{ width: 146, height: 47, borderRadius: 7.5 }}
           color="primary"
           className="text-white font-semibold text-xl"
+          onClick={handleButtonClick}
         >
           확인
         </Button>

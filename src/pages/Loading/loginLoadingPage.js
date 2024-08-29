@@ -8,21 +8,54 @@ const LoginLoadingPage = () => {
   const code = new URL(window.location.href).searchParams.get('code');
   useEffect(() => {
     const kakaoLogin = async () => {
-      await axios({
-        method: 'GET',
-        url: `${process.env.REACT_APP_REDIRECT_URL}/?code=${code}`,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
+      try {
+        const res = await axios({
+          method: 'GET',
+          url: `${process.env.REACT_APP_REST_API_URL}/oauth2/kakao?code=${code}`,
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+          }
+        });
+        console.log(res.data);
+        localStorage.setItem('name', res.data.nickname); // 토큰, 이름, 프로필등을 로컬스토리지에 저장해 사용
+        localStorage.setItem('profile', res.data.profile_image_url);
+        localStorage.setItem('token', res.data.token.accessToken);
+        console.log(localStorage.getItem('token'));
+        const token = localStorage.getItem('token');
+        try {
+          const storeRes = await axios({
+            // 등록가게 조회
+            method: 'GET',
+            url: `${process.env.REACT_APP_REST_API_URL}/store/user`,
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`
+            }
+          });
+          if (storeRes.data && storeRes.data.length > 0) {
+            navigate('/HomePage');
+          } else {
+            navigate('/Main');
+          }
+        } catch (error) {
+          console.error(
+            'store lookup error!!',
+            error.message,
+            error.response.data
+          );
         }
-      }).then((res) => {
-        console.log(res);
-        localStorage.setItem('name', res.data.acount.kakaoName);
-        navigate('/main');
-      });
+      } catch (error) {
+        console.error(
+          'token transmit error!!',
+          error.message,
+          error.response.data
+        );
+      }
     };
+
     kakaoLogin();
   }, []);
-  console.log(code);
+
   return (
     <div className="flex flex-col justify-center items-center min-w-full min-h-full gap-y-5">
       <div className="animate-spin">
