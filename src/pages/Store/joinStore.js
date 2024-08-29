@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ReactComponent as Logo } from '../../assets/logo.svg';
+import { ReactComponent as Logo } from '../../assets/app/logo.svg';
 import Button from '../../components/Button.js';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';

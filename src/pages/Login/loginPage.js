@@ -1,6 +1,6 @@
 import React from 'react';
-import { ReactComponent as SplashIcon } from '../../assets/logo.svg';
-import { ReactComponent as KakaoLoginButton } from '../../assets/kakao_login_button.svg';
+import { ReactComponent as SplashIcon } from '../../assets/app/logo.svg';
+import { ReactComponent as KakaoLoginButton } from '../../assets/login/kakao_login_button.svg';
 import { KAKAO_AUTH_URL } from '../../apis/api/auth';
 
 const LoginPage = () => {

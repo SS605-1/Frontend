@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { ReactComponent as Logo } from '../../assets/logo.svg';
+import { ReactComponent as Logo } from '../../assets/app/logo.svg';
 import Button from '../../components/Button.js';
 import Divider from '@mui/material/Divider';
 import theme from '../../style/theme.js';
 import { ThemeProvider } from '@mui/material/styles';
-import { ReactComponent as Shop } from '../../assets/shop.svg';
+import { ReactComponent as Shop } from '../../assets/emoji/shop.svg';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import { Box, Typography, List, ListItem, ListItemText } from '@mui/material';
-import { ReactComponent as Logo } from '../../assets/logo.svg';
+import { ReactComponent as Logo } from '../../assets/app/logo.svg';
 import Button from '../../components/Button.js';
 import { useNavigate } from 'react-router-dom';
 

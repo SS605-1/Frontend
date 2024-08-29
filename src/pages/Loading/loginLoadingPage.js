@@ -1,4 +1,4 @@
-import { ReactComponent as LogoIcon } from '../../assets/logo.svg';
+import { ReactComponent as LogoIcon } from '../../assets/app/logo.svg';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';

@@ -1,7 +1,7 @@
 import React from 'react';
-import { ReactComponent as Logo } from '../../assets/logo.svg';
+import { ReactComponent as Logo } from '../../assets/app/logo.svg';
 import Button from '../../components/Button.js';
-import { ReactComponent as Bag } from '../../assets/bag.svg';
+import { ReactComponent as Bag } from '../../assets/emoji/bag.svg';
 import { useNavigate } from 'react-router-dom';
 
 const Main = () => {
