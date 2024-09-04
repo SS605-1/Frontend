@@ -5,6 +5,8 @@ import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../../style/theme';
 import axios from 'axios';
+import Header from '../../components/layout/header';
+import Footer from '../../components/layout/footer';
 
 const Commute = () => {
   const location = useLocation();
@@ -15,6 +17,7 @@ const Commute = () => {
   localStorage.setItem('shopName', shop);
   const token = localStorage.getItem('token');
   const address = location.state.shopAddress;
+  localStorage.setItem('shopAddress', address);
   const storeId = localStorage.getItem('storeId');
   const today = new Date();
   const year = today.getFullYear();
@@ -24,7 +27,7 @@ const Commute = () => {
   const minutes = String(today.getMinutes()).padStart(2, '0');
   const seconds = String(today.getSeconds()).padStart(2, '0');
   const milliseconds = String(today.getMilliseconds()).padStart(3, '0');
-
+  const MyStore = '내 점포';
   const currentTime = `${year}-${month}-${date}T${hours}:${minutes}:${seconds}.${milliseconds}Z`;
 
   console.log(currentTime);
@@ -189,60 +192,66 @@ const Commute = () => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center">
-      {message && (
-        <div className="bg-green-500 text-white p-3 rounded-lg shadow-lg mb-3">
-          {message}
+    <>
+      <Header title={MyStore} />
+      <div className="flex flex-col justify-center">
+        {message && (
+          <div className="bg-green-500 text-white p-3 rounded-lg shadow-lg mb-3">
+            {message}
+          </div>
+        )}
+
+        <div className="flex flex-col justify-center h-[127px]">
+          <span className="font-bold text-black text-2xl">{shop}</span>
+          <span className="font-light text-black text-[15px]">{address}</span>
         </div>
-      )}
+        <div id="map" className="w-[375px] h-[433px]"></div>
 
-      <div className="flex flex-col justify-center h-[127px]">
-        <span className="font-bold text-black text-2xl">{shop}</span>
-        <span className="font-light text-black text-[15px]">{address}</span>
+        <div className="flex justify-center items-center gap-x-[33px] h-[55px]">
+          <Button
+            variant="contained"
+            disableElevation
+            sx={{ width: 146, height: 36, borderRadius: 7.5 }}
+            color="primary"
+            className="text-white font-bold text-xl"
+            onClick={handleGoToWorkClick}
+          >
+            출근
+          </Button>
+          <Button
+            variant="contained"
+            disableElevation
+            sx={{ width: 146, height: 36, borderRadius: 7.5 }}
+            color="secondary"
+            className="text-white font-bold text-xl"
+            onClick={handleLeaveWorkClick}
+          >
+            퇴근
+          </Button>
+        </div>
+
+        <ThemeProvider theme={theme}>
+          <Box
+            sx={{
+              width: 375,
+              height: 72,
+              bgcolor: 'primary.main'
+            }}
+            className="flex flex-col justify-center"
+          >
+            <p className="font-normal text-[16px] text-white">이번 달 월급은</p>
+
+            <p className="font-bold text-[16px] text-white flex justify-center gap-x-1">
+              _________원
+              <span className="font-normal text-[16px] text-white">
+                입니다.
+              </span>
+            </p>
+          </Box>
+        </ThemeProvider>
       </div>
-      <div id="map" className="w-[375px] h-[433px]"></div>
-
-      <div className="flex justify-center items-center gap-x-[33px] h-[55px]">
-        <Button
-          variant="contained"
-          disableElevation
-          sx={{ width: 146, height: 36, borderRadius: 7.5 }}
-          color="primary"
-          className="text-white font-bold text-xl"
-          onClick={handleGoToWorkClick}
-        >
-          출근
-        </Button>
-        <Button
-          variant="contained"
-          disableElevation
-          sx={{ width: 146, height: 36, borderRadius: 7.5 }}
-          color="secondary"
-          className="text-white font-bold text-xl"
-          onClick={handleLeaveWorkClick}
-        >
-          퇴근
-        </Button>
-      </div>
-
-      <ThemeProvider theme={theme}>
-        <Box
-          sx={{
-            width: 375,
-            height: 72,
-            bgcolor: 'primary.main'
-          }}
-          className="flex flex-col justify-center"
-        >
-          <p className="font-normal text-[16px] text-white">이번 달 월급은</p>
-
-          <p className="font-bold text-[16px] text-white flex justify-center gap-x-1">
-            _________원
-            <span className="font-normal text-[16px] text-white">입니다.</span>
-          </p>
-        </Box>
-      </ThemeProvider>
-    </div>
+      <Footer />
+    </>
   );
 };
 

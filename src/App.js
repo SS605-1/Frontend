@@ -12,6 +12,7 @@ import SettingPage from './pages/Setting/settingPage';
 import Commute from './pages/Commute/commute';
 import WageCalculate from './pages/Setting/wageCalculate';
 import InviteEmployee from './pages/Setting/inviteEmployee';
+import ManageEmployee from './pages/Setting/manageEmployee';
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/Commute" element={<Commute />} />
         <Route path="/WageCalculate" element={<WageCalculate />} />
         <Route path="/InviteEmployee" element={<InviteEmployee />} />
+        <Route path="/ManageEmployee" element={<ManageEmployee />} />
       </Routes>
     </div>
   );
