@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Divider from '@mui/material/Divider';
 import theme from '../../style/theme.js';
 import { ThemeProvider } from '@mui/material/styles';
@@ -18,6 +18,8 @@ const SettingPage = () => {
   const token = localStorage.getItem('token');
   const storeId = localStorage.getItem('storeId');
 
+  const [hasPermission, setHasPermission] = useState(false);
+
   // 버튼 텍스트, 아이콘, 경로를 함께 관리
   const buttonList = [
     { label: '임금 계산 절차', icon: <Won />, path: '/WageCalculate' },
@@ -36,7 +38,7 @@ const SettingPage = () => {
             Authorization: `Bearer ${token}`
           }
         });
-        console.log(res);
+        setHasPermission(res.data); // API 응답을 상태에 저장
       } catch (error) {
         console.error(
           'Store-check permission 오류!',
@@ -47,7 +49,21 @@ const SettingPage = () => {
     };
 
     fetchData();
-  }, [token]);
+  }, [token, storeId]);
+
+  // 버튼 클릭 핸들러
+  const handleButtonClick = (path) => {
+    if (path === '/ManageEmployee' || path === '/InviteEmployee') {
+      if (hasPermission) {
+        // axios 응답 데이터가 true이면, 위 두 사이트로 navigate
+        navigate(path);
+      } else {
+        alert('권한이 없습니다.'); // 아니면 안돼용~
+      }
+    } else {
+      navigate(path);
+    }
+  };
 
   return (
     <>
@@ -80,7 +96,7 @@ const SettingPage = () => {
                 <div
                   key={index}
                   className="w-[295px] h-[55px] cursor-pointer"
-                  onClick={() => navigate(button.path)}
+                  onClick={() => handleButtonClick(button.path)}
                 >
                   <ThemeProvider theme={theme}>
                     <Divider
